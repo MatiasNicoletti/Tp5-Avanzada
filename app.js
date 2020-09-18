@@ -2,10 +2,10 @@ import State from './state.js';
 
 const getUsersByPage = (currentPage) => {
     return new Promise((resolve, reject) => {
-        let showQuantity = 10;
-        let from = currentPage * showQuantity;
-        let to = from + showQuantity;
-        let url = `${state.baseURL}/${from}/${to}`;
+        const showQuantity = 10;
+        const from = currentPage * showQuantity;
+        const to = from + showQuantity;
+        const url = `${state.baseURL}/${from}/${to}`;
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = 'json';
@@ -34,7 +34,7 @@ const createButtonsPages = async () => {
 
 const getTotal = () => {
     return new Promise((resolve, reject) => {
-        let url = `${state.baseURL}/total`;
+        const url = `${state.baseURL}/total`;
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = 'json';
@@ -53,8 +53,8 @@ const getTotal = () => {
 
 
 const toggleActivePageBtn = () => {
-    let btnACt = document.querySelector('.activate');
-    let btn = document.querySelector(`[data-page-number="${state.currentPage}"]`);
+    const btnACt = document.querySelector('.activate');
+    const btn = document.querySelector(`[data-page-number="${state.currentPage}"]`);
     if (btnACt) {
         btnACt.classList.remove('activate');
     }
@@ -62,13 +62,14 @@ const toggleActivePageBtn = () => {
 }
 
 const renderTable = (user, tbody) => {
-    let tdataID = document.createElement('td');
-    let tdataName = document.createElement('td');
-    let tdataLast = document.createElement('td');
+    const tdataID = document.createElement('td');
+    const tdataName = document.createElement('td');
+    const tdataLast = document.createElement('td');
+    const tr = document.createElement('tr');
     tdataID.innerHTML = user.userId;
     tdataName.innerHTML = user.firstName;
     tdataLast.innerHTML = user.lastName;
-    const tr = document.createElement('tr');
+    
     tbody.appendChild(tr);
     tr.appendChild(tdataID);
     tr.appendChild(tdataName);
